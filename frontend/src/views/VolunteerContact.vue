@@ -1,62 +1,11 @@
 <script>
-export default {
-  data() {
-    return {
-      result: "",
-    };
-  },
-  mounted() {
-    this.getUser();
-  },
-  methods: {
-    async getUser() {
-      try {
-        const res = await fetch(
-          `http://localhost:5000/users/${this.$route.params._id}`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        this.result = await res.json();
-        console.log(this.result.firstName);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-};
+
 </script>
 
 <template>
   <div class="container__volunteer-contact">
     <div class="volunteer__box">
-      <img v-bind:src="result.photoURL" class="volunteer__img" />
-      <div class="profile__detail-text">
-        <h2>{{ result.firstName }}</h2>
-        <p><b>Nationality: </b>{{ result.nationality }}</p>
-        <p><b>City:</b> {{ result.location[1]}}</p>
-        <p><b>Languages: </b>
-        <ul>
-          <li>{{ result.languages[0] }}</li>
-          <li>{{ result.languages[1] }}</li>
-          <li>{{ result.languages[2] }}</li>
-          <li>{{ result.languages[3] }}</li>
-        </ul></p>
-      </div>
-      <div class="profile__text">
-        <p><b>Skills: </b>
-        <ul>
-          <li>{{ result.skills[0] }}</li>
-          <li>{{ result.skills[1] }}</li>
-          <li>{{ result.skills[2] }}</li>
-          <li>{{ result.skills[3] }}</li>
-        </ul></p>
-
-        <p><b>Description: </b>{{ result.description }}</p>
-      </div>
+     
     </div>
 
     <div class="volunteer__box">
